@@ -2,7 +2,7 @@ package commandLine;
 
 import java.util.Scanner;
 
-public class Login {
+public class LoginCm {
     public static void main(String[] args) {
         // Hardcoded username and password
         String correctUsername = "Jeremy Stone";
@@ -28,7 +28,7 @@ public class Login {
         } else {
             // Failed login
             System.out.println("Incorrect username or password. Try again.");
-            Login.main(args);
+            LoginCm.main(args);
         }
 
         // Close the scanner

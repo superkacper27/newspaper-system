@@ -2,7 +2,7 @@ package commandLine;
 
 import java.util.Scanner;
 
-public class Invoice {
+public class InvoiceCm {
 	
 	public static void CustomerOptions() {
 		System.out.println(" ");

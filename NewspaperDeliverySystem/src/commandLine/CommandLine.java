@@ -48,23 +48,23 @@ public class CommandLine {
 				switch (functionNumber) {
 		
 				case "1":
-					Customer.main(args);
+					CustomerCm.main(args);
 					break;
 					
 				case "2": 
-					DeliveryDocket.main(args);
+					DeliveryDocketCm.main(args);
 					break;
 					
 				case "3":
-					Invoice.main(args);
+					InvoiceCm.main(args);
 					break;
 				case "4":
-					Order.main(args);
+					OrderCm.main(args);
 					break;
 			
 				case "99":
 					System.out.println("Logging Out");
-					Login.main(args);
+					LoginCm.main(args);
 					break;
 			
 				default:
