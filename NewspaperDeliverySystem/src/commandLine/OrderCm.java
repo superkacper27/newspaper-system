@@ -6,7 +6,7 @@ public class OrderCm {
 	
 	public static void CustomerOptions() {
 		System.out.println(" ");
-		System.out.println("=============================================");
+		System.out.println("==============================================");
 		System.out.println("Please choose ONE of the following options:");
 		System.out.println("1. Create a new Order");
 		System.out.println("2. View Order");
