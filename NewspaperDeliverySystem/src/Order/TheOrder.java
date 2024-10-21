@@ -5,51 +5,55 @@ import java.util.*;
 
 public class TheOrder extends TestCase {
 
-    private order testOrder;
-
-    protected void setUp() throws Exception {
-        super.setUp();
-        testOrder = new order();
-    }
-
     // Test 1: Validate the list of publications
-    //Inputs: "The Irish Times", "The Irish Independent", "Irish Mirror", "The Irish Sun"
+    //Inputs: Publication = "The Irish Times" Days = "Monday"
     //Expected Output: Pass
-    public void testPublicationList() {
-        try {
-            List<String> expectedPublications = Arrays.asList("The Irish Times", "The Irish Independent", "Irish Mirror", "The Irish Sun");
-            assertEquals(expectedPublications, testOrder.getPublications());
-        } catch (Exception e) {
-            fail("Exception not expected in testPublicationList: " + e.getMessage());
-        }
-    }
+    
+	public void testOrder001() {		
+		try {
+			
+			order ordObj = new order("The Irish Times", "Monday");
+			
+			assertEquals("The Irish Times", ordObj.getPublication());
+			assertEquals("Monday", ordObj.getDays());
+		}
+		catch (OrderExceptionHandler e) {
+			fail("Exception not expected");
+		}
+		
+	}
 
-    // Test 2: Valid Dday selection
-    //Inputs: "Monday", "Wednesday", "Friday"
-    //Expected Output: Pass
-    public void testSelectedDays() {
-        try {
-            List<String> expectedDays = Arrays.asList("Monday", "Wednesday", "Friday");
-            String input = "Monday, Wednesday, Friday";
-            Scanner scanner = new Scanner(input);
-            List<String> result = testOrder.getSelectedDays(scanner);
-            assertEquals(expectedDays, result);
-        } catch (Exception e) {
-            fail("Exception not expected in testSelectedDays: " + e.getMessage());
-        }
-    }
-
-    // Test 3: Invalid day selection
-    //Inputs: "Monda, Wednesdau"
+    // Test 2: Invalid Publication selection
+    //Inputs: "Da irish tim"
     //Expected Output: Fail
-    public void testInvalidDaySelection() {
-        try {
-            String input = "Monda, Wednesdau"; 
-            Scanner scanner = new Scanner(input);
-            List<String> result = testOrder.getSelectedDays(scanner);
-            assertTrue(result.isEmpty());
-        } catch (Exception e) {
-            fail("Exception not expected in testInvalidDaySelection: " + e.getMessage());
-        }
-    }
+
+	public void testValidatePublication001() {
+			
+		try {
+				
+			//Call method under test
+			order.validatePublication("Da irish tim");
+			fail("Exception expected");
+		}
+		catch (OrderExceptionHandler e) {
+			assertEquals("Invalid Order Publication", e.getMessage());	
+		}
+	}
+	
+    // Test 3: Invalid day selection
+    //Inputs: "Monda"
+    //Expected Output: Fail
+	
+	public void testValidatePublication002() {
+		
+		try {
+				
+			//Call method under test
+			order.validateDays("Monda");
+			fail("Exception expected");
+		}
+		catch (OrderExceptionHandler e) {
+			assertEquals("Invalid Order Day", e.getMessage());	
+		}
+	}
 }
