@@ -44,7 +44,7 @@ public class MySqlAccess {
 		try {
 		
 			//Create prepared statement to issue SQL query to the database
-			preparedStatement = connect.prepareStatement("insert into newpaperSystem.customers values (default, ?, ?, ?, ?, ? ,?, ?, ?, ?)");
+			preparedStatement = connect.prepareStatement("insert into newpaperSystem.customer values (default, ?, ?, ?, ?, ? ,?, ?, ?, ?)");
 			preparedStatement.setInt(1, c.getCustomerID());
 			preparedStatement.setString(2, c.getFirstName());
 			preparedStatement.setString(3, c.getLastName());
