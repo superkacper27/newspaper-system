@@ -2,14 +2,8 @@ package commandLine;
 
 
 public class CustomerExceptionHandler extends Exception {
-	
-	String message;
-	
-	public CustomerExceptionHandler(String errMessage){
-		message = errMessage;
-	}
-	
-	public String getMessage() {
-		return message;
-	}
+    
+    public CustomerExceptionHandler(String errMessage) {
+        super(errMessage); // Call the superclass constructor with the error message
+    }
 }

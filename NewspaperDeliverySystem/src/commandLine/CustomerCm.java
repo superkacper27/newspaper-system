@@ -44,21 +44,20 @@ public static void main(String[] args) {
 		
 				case "1":
 					System.out.printf("Enter Customers first Name: \n");
-					String custFName = keyboard.next();
-					System.out.printf("Enter Customers second Name: \n");
-					String custSName = keyboard.next();
+					String custName = keyboard.next();
 					System.out.printf("Enter Customer Address: \n");
 					String custAddr = keyboard.next();
 					System.out.printf("Enter Customer PhoneNumber: \n");
-					String custphone = keyboard.next();
+					String custPhone = keyboard.next();
 					System.out.printf("Enter Customer Eircode: \n");
 					String custEircode = keyboard.next();
-					System.out.printf("Enter Customer Eircode: \n");
-					String custDeliveryDays = keyboard.next();
-					System.out.printf("Enter Customer Eircode: \n");
+					System.out.printf("Enter Days of Delivery: \n");
+					String daysOfDelivery = keyboard.next();
+					System.out.printf("Enter Customer Email: \n");
 					String custEmail = keyboard.next();
+
 				
-					Customer custObj = new Customer(custFName, custSName, custAddr, custphone, custEircode, custDeliveryDays, custEmail);
+					Customer custObj = new Customer(custName, custAddr, custPhone, custEircode, daysOfDelivery, custEmail);
 				
 					//Insert Customer Details into the database
 					boolean insertResult = dao.insertCustomerDetailsAccount(custObj);

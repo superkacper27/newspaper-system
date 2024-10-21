@@ -13,7 +13,7 @@ public class MySqlAccess {
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
 	
-	final private String host ="jdbc:mysql://GibbytheLaptop:3306/newspapersystem";
+	final private String host ="jdbc:mysql://GibbytheLaptop:3306/newspaperSystem";
 	final private String user = "root";
 	final private String password = "Mike";
 	
@@ -45,14 +45,13 @@ public class MySqlAccess {
 		
 			//Create prepared statement to issue SQL query to the database
 			preparedStatement = connect.prepareStatement("insert into newpaperSystem.customer values (default, ?, ?, ?, ?, ? ,?, ?, ?, ?)");
-			preparedStatement.setInt(1, c.getCustomerID());
-			preparedStatement.setString(2, c.getFirstName());
-			preparedStatement.setString(3, c.getLastName());
+			preparedStatement.setInt(1, c. getId());
+			preparedStatement.setString(2, c.getName());
 			preparedStatement.setString(4, c.getAddress());
 			preparedStatement.setString(5, c.getPhoneNumber());
 			preparedStatement.setString(6, c.getEircode());
-			preparedStatement.setInt(7, c.getOrderFrequency());
-			preparedStatement.setString(8, c.getDeliveryDays());
+			preparedStatement.setInt(7, c.getFrequency());
+			preparedStatement.setString(8, c.getDaysOfDelivery());
 			preparedStatement.setString(9, c.getEmail());
 			preparedStatement.executeUpdate();
 		
