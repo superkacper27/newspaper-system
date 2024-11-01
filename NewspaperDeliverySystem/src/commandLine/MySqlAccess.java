@@ -13,7 +13,7 @@ public class MySqlAccess {
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
 	
-	final private String host ="jdbc:mysql://GibbytheLaptop:3306/newspaperSystem";
+	final private String host ="localhost:3306";
 	final private String user = "root";
 	final private String password = "Mike";
 	
@@ -24,9 +24,9 @@ public class MySqlAccess {
 			
 			//Load MySQL Driver
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			
+			String url="jdbc:mysql://localhost:3306/library?useTimezone=true&serverTimezone=UTC";
 			//Setup the connection with the DB
-			connect = DriverManager.getConnection("jdbc:mysql://" + host + "newspaperSystem" + "user=" + user + "&password=" + password);
+			connect = DriverManager.getConnection("jdbc:mysql://" + host + "/newspaperSystem?" + "user=" + user + "&password=" + password);
 		}
 		catch (Exception e) {
 			throw e;
