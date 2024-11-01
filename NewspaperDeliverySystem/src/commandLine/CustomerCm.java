@@ -43,8 +43,10 @@ public static void main(String[] args) {
 				switch (functionNumber) {
 		
 				case "1":
-					System.out.printf("Enter Customers first Name: \n");
-					String custName = keyboard.next();
+					System.out.printf("Enter Customers Name: \n");
+					String custFName = keyboard.next();
+					System.out.printf("Enter Customers Name: \n");
+					String custSName = keyboard.next();
 					System.out.printf("Enter Customer Address: \n");
 					String custAddr = keyboard.next();
 					System.out.printf("Enter Customer PhoneNumber: \n");
@@ -57,7 +59,7 @@ public static void main(String[] args) {
 					String custEmail = keyboard.next();
 
 				
-					Customer custObj = new Customer(custName, custAddr, custPhone, custEircode, daysOfDelivery, custEmail);
+					Customer custObj = new Customer(custFName, custSName, custAddr, custPhone, custEircode, daysOfDelivery, custEmail);
 				
 					//Insert Customer Details into the database
 					boolean insertResult = dao.insertCustomerDetailsAccount(custObj);

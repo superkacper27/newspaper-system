@@ -2,19 +2,23 @@ package commandLine;
 
 public class Customer {
     
-    private int id;
-    private String name;
+    private static final String custFName = null;
+	private int id;
+    private String Fname;
+    private String Sname;
     private String address;
     private String phoneNumber;
     private String email;
     private String eircode;
     private int frequency;
     private String daysOfDelivery;
+	private String custSName;
     
     // Constructor
-    public Customer(String custName, String custAddr, String custPhone, String custEmail, String custEircode, String daysOfDelivery) throws CustomerExceptionHandler {
+    public Customer(String custFName, String custSName, String custAddr, String custPhone, String custEircode, String daysOfDelivery, String custEmail) throws CustomerExceptionHandler {
         this.id = 0; // Default id for now
-        setName(custName);
+        setFname(custFName);
+        setSname(custSName);
         setAddress(custAddr);
         setPhoneNumber(custPhone);
         setEmail(custEmail);
@@ -24,12 +28,16 @@ public class Customer {
     }
 
     // Getter methods
+	public String getFname() {
+		return Fname;
+	}
+	
+	public String getSname() {
+		return Sname;
+	}
+	
     public int getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getAddress() {
@@ -57,13 +65,18 @@ public class Customer {
     }
 
     // Setter methods with validation
+	public void setFname(String fname) throws CustomerExceptionHandler{
+        validateName(custFName);
+		Fname = fname;
+	}
+	
+	public void setSname(String sname) throws CustomerExceptionHandler{
+        validateName(custSName);
+		Sname = sname;
+	}
+	
     public void setId(int custId) {
         this.id = custId;
-    }
-
-    public void setName(String custName) throws CustomerExceptionHandler {
-        validateName(custName);
-        this.name = custName;
     }
 
     public void setAddress(String custAddr) throws CustomerExceptionHandler {
@@ -147,4 +160,5 @@ public class Customer {
         if (daysOfDelivery == null || daysOfDelivery.isEmpty())
             throw new CustomerExceptionHandler("Days of delivery NOT specified");
     }
+
 }

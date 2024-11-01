@@ -46,7 +46,8 @@ public class MySqlAccess {
 			//Create prepared statement to issue SQL query to the database
 			preparedStatement = connect.prepareStatement("insert into newpaperSystem.customer values (default, ?, ?, ?, ?, ? ,?, ?, ?, ?)");
 			preparedStatement.setInt(1, c. getId());
-			preparedStatement.setString(2, c.getName());
+			preparedStatement.setString(2, c.getFname());
+			preparedStatement.setString(3, c.getSname());
 			preparedStatement.setString(4, c.getAddress());
 			preparedStatement.setString(5, c.getPhoneNumber());
 			preparedStatement.setString(6, c.getEircode());
