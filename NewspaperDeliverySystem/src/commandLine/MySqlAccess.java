@@ -65,4 +65,35 @@ public class MySqlAccess {
 		return insertSucessfull;
 		
 	}
+		
+		public ResultSet retrieveAllCustomerAccounts() {
+			
+			try {
+				statement = connect.createStatement();
+				resultSet = statement.executeQuery("Select * from newpaperSystem.customer");
+			}catch(Exception e) {
+				resultSet = null;
+			}
+			return resultSet;
+		}
+		
+		public boolean deleteCustomerById(int custID) {
+			
+			boolean deleteSucessfull = true;
+			
+			try {
+				
+				if(custID == -99)
+					preparedStatement = connect.prepareStatement("delete from newpaperSystem.customer");
+				else
+					preparedStatement = connect.prepareStatement("delete from newpaperSystem.customer where id = " + custID);
+				preparedStatement.executeUpdate();
+
+			}catch (Exception e) {
+				deleteSucessfull = false;
+			}
+			
+			return deleteSucessfull;
+			
+		}
 }

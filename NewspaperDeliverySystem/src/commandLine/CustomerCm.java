@@ -1,5 +1,6 @@
 package commandLine;
 
+import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class CustomerCm {
@@ -15,6 +16,43 @@ public class CustomerCm {
 		System.out.println("99. Main Menue");
 		System.out.println("=============================================");
 		System.out.println(" ");
+	}
+	
+private static boolean printCustomerTable(ResultSet rs) throws Exception {
+		
+		//Print The Contents of the Full Customer Table
+		
+		System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println("Table: " + rs.getMetaData().getTableName(1));
+		for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+			System.out.printf("%30s",rs.getMetaData().getColumnName(i));
+		}
+		System.out.println();
+		while (rs.next()) {
+			int id = rs.getInt("id");
+			String fname = rs.getString("custfname");
+			String sname = rs.getString("custsname");
+			String addr = rs.getString("custaddr");
+			String phone = rs.getString("custphone");
+			String eircode = rs.getString("custsname");
+			String daysofd = rs.getString("custsname");
+			String email = rs.getString("custsname");
+
+			System.out.printf("%30s", id);
+			System.out.printf("%30s", fname);
+			System.out.printf("%30s", sname);
+			System.out.printf("%30s", addr);
+			System.out.printf("%30s", phone);
+			System.out.printf("%30s", eircode);
+			System.out.printf("%30s", daysofd);
+			System.out.printf("%30s", email);
+
+			System.out.println();
+		}// end while
+		System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
+		
+		return true;
+		
 	}
 	
 	
@@ -70,12 +108,16 @@ public static void main(String[] args) {
 					break;
 					
 				case "2": 
-					Scanner scanner2 = new Scanner(System.in);
-					
-					System.out.println("View Customer Table");
-					
-					System.out.println("Press any key to return to the main menu...");
-			        scanner2.nextLine();
+					ResultSet rSet = dao.retrieveAllCustomerAccounts();
+					if (rSet == null) {
+						System.out.println("No Records Found");
+						break;
+					}
+					else {
+						boolean tablePrinted = printCustomerTable(rSet);
+						if (tablePrinted == true)
+							rSet.close();
+					}
 					break;
 					
 				case "3":
@@ -87,12 +129,15 @@ public static void main(String[] args) {
 			        scanner3.nextLine();
 					break;
 				case "4":
-					Scanner scanner4 = new Scanner(System.in);
-					
-					System.out.println("Delete Customer");
-					
-					System.out.println("Press any key to return to the main menu...");
-			        scanner4.nextLine();
+					System.out.println("Enter Customer Id to be deleted or -99 to Clear all Rows");
+					String deleteCustId = keyboard.next();
+					boolean deleteResult = dao.deleteCustomerById(Integer.parseInt(deleteCustId));
+					if ((deleteResult == true) && (deleteCustId.equals("-99")))
+						System.out.println("Customer Table Emptied");
+					else if (deleteResult == true)
+						System.out.println("Customer Deleted");
+					else 
+						System.out.println("ERROR: Customer Details NOT Deleted or Do Not Exist");
 					break;
 			
 				case "99":
