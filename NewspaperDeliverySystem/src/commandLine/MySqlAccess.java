@@ -51,9 +51,9 @@ public class MySqlAccess {
 			preparedStatement.setString(4, c.getAddress());
 			preparedStatement.setString(5, c.getPhoneNumber());
 			preparedStatement.setString(6, c.getEircode());
-			preparedStatement.setInt(7, c.getFrequency());
-			preparedStatement.setString(8, c.getDaysOfDelivery());
-			preparedStatement.setString(9, c.getEmail());
+			//preparedStatement.setInt(7, c.getFrequency());
+			preparedStatement.setString(7, c.getDaysOfDelivery());
+			preparedStatement.setString(8, c.getEmail());
 			preparedStatement.executeUpdate();
 		
 	 
