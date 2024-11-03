@@ -2,7 +2,7 @@ package commandLine;
 
 public class Customer {
     
-    private static final String custFName = null;
+
 	private int id;
     private String Fname;
     private String Sname;
@@ -12,7 +12,7 @@ public class Customer {
     private String eircode;
     private int frequency;
     private String daysOfDelivery;
-	private String custSName;
+
     
     // Constructor
     public Customer(String custFName, String custSName, String custAddr, String custPhone, String custEircode, String daysOfDelivery, String custEmail) throws CustomerExceptionHandler {
@@ -65,14 +65,14 @@ public class Customer {
     }
 
     // Setter methods with validation
-	public void setFname(String fname) throws CustomerExceptionHandler{
-        validateName(custFName);
-		Fname = fname;
+	public void setFname(String custFName) throws CustomerExceptionHandler{
+        validateFName(custFName);
+		Fname = custFName;
 	}
 	
-	public void setSname(String sname) throws CustomerExceptionHandler{
-        validateName(custSName);
-		Sname = sname;
+	public void setSname(String custSName) throws CustomerExceptionHandler{
+        validateSName(custSName);
+		Sname = custSName;
 	}
 	
     public void setId(int custId) {
@@ -110,14 +110,25 @@ public class Customer {
     }
 
     // Validation methods
-    public static void validateName(String custName) throws CustomerExceptionHandler {
-        if (custName == null || custName.isEmpty())
+    public static void validateFName(String custFName) throws CustomerExceptionHandler {
+        if (custFName == null || custFName.isEmpty())
             throw new CustomerExceptionHandler("Customer Name NOT specified");
-        else if (custName.length() < 2)
+        else if (custFName.length() < 2)
             throw new CustomerExceptionHandler("Customer Name does not meet minimum length requirements");
-        else if (custName.length() > 50)
+        else if (custFName.length() > 50)
             throw new CustomerExceptionHandler("Customer Name exceeds maximum length requirements");
-        else if (!custName.matches("^[a-zA-Z ]+$")) // Check for symbols
+        else if (!custFName.matches("^[a-zA-Z ]+$")) // Check for symbols
+            throw new CustomerExceptionHandler("Customer Name contains invalid characters");
+    }
+    
+    public static void validateSName(String custSName) throws CustomerExceptionHandler {
+        if (custSName == null || custSName.isEmpty())
+            throw new CustomerExceptionHandler("Customer Name NOT specified");
+        else if (custSName.length() < 2)
+            throw new CustomerExceptionHandler("Customer Name does not meet minimum length requirements");
+        else if (custSName.length() > 50)
+            throw new CustomerExceptionHandler("Customer Name exceeds maximum length requirements");
+        else if (!custSName.matches("^[a-zA-Z ]+$")) // Check for symbols
             throw new CustomerExceptionHandler("Customer Name contains invalid characters");
     }
 
