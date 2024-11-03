@@ -104,7 +104,7 @@ public static void main(String[] args) {
 					if (insertResult == true)
 						System.out.println("Customer Details Saved");
 					else 
-						System.out.println("ERROR: Customer Details NOT Save");
+						System.out.println("ERROR: Customer Details NOT Saved");
 					break;
 					
 				case "2": 
