@@ -12,7 +12,7 @@ public class TheOrder extends TestCase {
 	public void testOrder001() {		
 		try {
 			
-			order ordObj = new order("The Irish Times", "Monday");
+			order ordObj = new order("The Irish Times", "Monday", 0);
 			
 			assertEquals("The Irish Times", ordObj.getPublication());
 			assertEquals("Monday", ordObj.getDays());
@@ -64,7 +64,7 @@ public class TheOrder extends TestCase {
 	public void testEditOrderFields001() {
 	    try {
 	        // Step 1: Create an order with initial values
-	        order ordObj = new order("The Irish Times", "Monday");
+	        order ordObj = new order("The Irish Times", "Monday", 0);
 
 	        // Step 2: Edit the publication and days fields
 	        ordObj.setPublication("The Irish Independent");
@@ -86,7 +86,7 @@ public class TheOrder extends TestCase {
 	public void testEditOrderFields002() {
 	    try {
 	        // Step 1: Create an order with initial values
-	        order ordObj = new order("The Irish Times", "Monday");
+	        order ordObj = new order("The Irish Times", "Monday", 0);
 
 	        // Step 2: Edit the publication and days fields
 	        ordObj.setPublication("The Guardian");

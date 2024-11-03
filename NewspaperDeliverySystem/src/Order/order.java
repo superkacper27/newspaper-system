@@ -32,7 +32,7 @@ public class order {
 		try {
 			validatePublication(publication);
 			validateDays(days);
-			validateID(iD);
+			this.ID = 0;
 		}catch(OrderExceptionHandler e) {
 			throw e;
 		}
@@ -47,5 +47,10 @@ public class order {
 	public static void validateDays(String days) throws OrderExceptionHandler {
 		if (days.isBlank() || days.isEmpty())
 			throw new OrderExceptionHandler("Invalid Day Seleced");
+	}
+
+	public void deleteOrder() {
+		// TODO Auto-generated method stub
+		
 	}
 }
