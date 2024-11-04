@@ -55,7 +55,7 @@ public class MySqlAccess {
 			preparedStatement.setString(6, c.getDaysOfDelivery());
 			preparedStatement.setString(6, c.getEmail());
 			preparedStatement.executeUpdate();
-		
+		//hi
 	 
 		}
 		catch (Exception e) {
