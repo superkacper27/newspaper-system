@@ -11,14 +11,9 @@ public class DeleteOrder extends TestCase {
     }
     
     public void testDeleteOrder() {
-        try {
-            order.deleteOrder();  
-            
-            assertNull("Publication null", order.getPublication());
-            assertNull("Days null", order.getDays());   
-            
-        } catch (OrderExceptionHandler e) {
-            fail("Exception not expected during delete");
-        }
-
+        order.deleteOrder();  
+		
+		assertNull("Publication null", order.getPublication());
+		assertNull("Days null", order.getDays());
+    }
 }
