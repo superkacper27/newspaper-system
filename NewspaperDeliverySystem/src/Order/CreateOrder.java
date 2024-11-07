@@ -3,7 +3,7 @@ package Order;
 import junit.framework.TestCase;
 import java.util.*;
 
-public class TheOrder extends TestCase {
+public class CreateOrder extends TestCase {
 
     // Test 1: Validate the list of publications
     //Inputs: Publication = "The Irish Times" Days = "Monday"
