@@ -74,7 +74,7 @@ public class order {
 		this.active = false;
 	}
 	public String readOrder() {
-		if (!active) return "Order has been deleted";
+		if (!active) return "Customer order no longer exists";
 	    return "Customer ID: " + ID + ", Publication(s): " + publication + ", Day(s) of the Week: " + days;
 	}
 

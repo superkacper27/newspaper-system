@@ -17,7 +17,7 @@ public class DeleteOrder extends TestCase {
         order.deleteOrder();  
 		
         assertFalse("Order should be inactive after deletion", order.isActive());
-        assertEquals("Order has been deleted", order.readOrder());
+        assertEquals("Customer order no longer exists", order.readOrder());
     }
     //Test 2: Delete Order
     //Input: "Delete Order" a second time

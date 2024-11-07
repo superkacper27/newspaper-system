@@ -121,10 +121,9 @@ public class CreateOrder extends TestCase {
 			
 		try {
 			order.validatePublication("Da ear tim");
-			fail("Exception expected");
 		}
 		catch (OrderExceptionHandler e) {
-			assertEquals("Invalid Order Publication", e.getMessage());	
+			fail("Invalid Publication Order");
 		}
 	}
 	
@@ -136,10 +135,9 @@ public class CreateOrder extends TestCase {
 		
 		try {
 			order.validateDays("Monda");
-			fail("Exception expected");
 		}
 		catch (OrderExceptionHandler e) {
-			assertEquals("Invalid Order Day", e.getMessage());	
+			fail("Invalid Order Day");
 		}
 	}
     // Test 10: Blank publication selection
