@@ -6,9 +6,4 @@ public class OrderExceptionHandler extends Exception {
 	public OrderExceptionHandler(String errMessage){
 		message = errMessage;
 	}
-	
-	public String getMessage() {
-		return message;
-	}
-
 }

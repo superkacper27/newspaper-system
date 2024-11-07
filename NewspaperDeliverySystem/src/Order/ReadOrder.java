@@ -17,7 +17,7 @@ public class ReadOrder extends TestCase {
     //Expected Output: "Publication(s): The Irish Times, Day(s) of the Week: Monday, Customer ID: 0"
         public void testReadOrder() {
         	
-        	String expectedInfo = "Publication(s): The Irish Times, Day(s) of the Week: Monday, Customer ID: 0";
+        	String expectedInfo = "Customer ID: 0, Publication(s): The Irish Times, Day(s) of the Week: Monday";
 
             assertEquals(expectedInfo, order.readOrder());
     }
