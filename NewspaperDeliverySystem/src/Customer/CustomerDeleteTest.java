@@ -7,7 +7,7 @@ public class CustomerDeleteTest extends TestCase {
     private Customer customer;
 
     protected void setUp() throws Exception {
-        customer = new Customer("Jane Doe", "456 Street, City", "0851234567", "jane.doe@example.com", "D02X285", 3, "Monday, Wednesday, Friday");
+        customer = new Customer("Jane", "Doe", "456 Street, City", "0851234567", "D02X285", "Monday, Wednesday, Friday", "jane.doe@example.com");
         customer.setId(1);
     }
 

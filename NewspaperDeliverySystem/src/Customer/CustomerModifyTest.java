@@ -8,13 +8,15 @@ public class CustomerModifyTest extends TestCase {
 
     // Setup for tests
     protected void setUp() throws Exception {
-        customer = new Customer("John Smith", "123 Street Name, City", "0851234567", "customer@example.com", "D02X285", 3, "Monday, Wednesday, Friday");
+        customer = new Customer("John", "Smith", "123 Street Name, City", "0851234567", "D02X285", "Monday, Wednesday, Friday", "customer@example.com");
     }
 
     // Test modifying the customer name
     public void testModifyCustomerName() throws CustomerExceptionHandler {
-        customer.setName("Jane Doe");
-        assertEquals("Jane Doe", customer.getName());
+        customer.setFname("Jane");
+        customer.setSname("Doe");
+        assertEquals("Jane", customer.getFname());
+        assertEquals("Doe", customer.getSname());
     }
 
     // Test modifying the customer address
