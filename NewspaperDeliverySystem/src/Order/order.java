@@ -5,7 +5,7 @@ public class order {
 	private String publication;
 	private String days;
 	private int ID;
-	
+	private boolean active;
 	
 
 
@@ -33,6 +33,7 @@ public class order {
 			validatePublication(publication);
 			validateDays(days);
 			this.ID = 0;
+			this.active = true;
 		}catch(OrderExceptionHandler e) {
 			throw e;
 		}
@@ -50,11 +51,14 @@ public class order {
 	}
 
 	public void deleteOrder() {
-		// TODO Auto-generated method stub
-		
+		this.active = false;
 	}
 	public String readOrder() {
+		if (!active) return "Customer order no longer exists";
+        return "Order ID: " + ID + ", Publication: " + publication + ", Days: " + days;
+	}
+	public boolean isActive() {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 }

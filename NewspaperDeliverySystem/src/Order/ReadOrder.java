@@ -11,6 +11,10 @@ public class ReadOrder extends TestCase {
         order = new order("The Irish Times", "Monday", 0);
     }
         
+    
+    //Test 1: Read Order
+    //Input: Read Order
+    //Expected Output: "Publication(s): The Irish Times, Day(s) of the Week: Monday, Customer ID: 0"
         public void testReadOrder() {
         	
         	String expectedInfo = "Publication(s): The Irish Times, Day(s) of the Week: Monday, Customer ID: 0";

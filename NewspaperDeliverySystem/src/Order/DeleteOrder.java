@@ -10,10 +10,13 @@ public class DeleteOrder extends TestCase {
         order = new order("The Irish Times", "Monday", 0);
     }
     
+    //Test 1: Delete Order
+    //Input: "Delete Order"
+    //Expected Outputs: "Order has been deleted
     public void testDeleteOrder() {
         order.deleteOrder();  
 		
-		assertNull("Publication null", order.getPublication());
-		assertNull("Days null", order.getDays());
+        assertFalse("Order should be inactive after deletion", order.isActive());
+        assertEquals("Order has been deleted", order.readOrder());
     }
 }
