@@ -53,7 +53,7 @@ public class MySqlAccess {
 			preparedStatement.setString(5, c.getEircode());
 			//preparedStatement.setInt(7, c.getFrequency());
 			preparedStatement.setString(6, c.getDaysOfDelivery());
-			preparedStatement.setString(6, c.getEmail());
+			preparedStatement.setString(7, c.getEmail());
 			preparedStatement.executeUpdate();
 		//hi
 	 
