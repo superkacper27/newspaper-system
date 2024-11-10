@@ -1,5 +1,6 @@
 package commandLine;
 
+import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class OrderCm {
@@ -25,78 +26,96 @@ public static void main(String[] args) {
 		
 		//Create the Database Object
 		
-		try {
-			
-			
+	try {
 		
-			// Configure System for Running
-			Scanner keyboard = new Scanner(System.in); 
-			String functionNumber = "-99";
-			boolean keepAppOpen = true;
 		
-			while (keepAppOpen == true) {
-			
-				//Present list of functionality and get selection
-				CustomerOptions();
-				functionNumber = keyboard.next();
-		
-				switch (functionNumber) {
-		
-				case "1":
-			        Scanner scanner = new Scanner(System.in);
-
-					System.out.println("Create a new Order");
-					
-			        System.out.println("Press any key to return to the main menu...");
-			        scanner.nextLine();
-					break;
-					
-				case "2": 
-			        Scanner scanner2 = new Scanner(System.in);
-
-					System.out.println("View Order");
-					
-			        System.out.println("Press any key to return to the main menu...");
-			        scanner2.nextLine();
-					break;
-					
-				case "3":
-			        Scanner scanner3 = new Scanner(System.in);
-
-					System.out.println("Update Order");
-					
-			        System.out.println("Press any key to return to the main menu...");
-			        scanner3.nextLine();
-					break;
-				case "4":
-			        Scanner scanner4 = new Scanner(System.in);
-
-					System.out.println("Delete Order");
-					
-			        System.out.println("Press any key to return to the main menu...");
-			        scanner4.nextLine();
-					break;
-			
-				case "99":
-					System.out.println("Main Menue");
-					CommandLine.main(args);
-					break;
-			
-				default:
-					System.out.println("No Valid Function Selected");
-					break;
-				} // end switch
-		
-			}// end while
-		
-			//Tidy up Resources
-			keyboard.close();
-		
-		}
+		MySqlAccess dao = new MySqlAccess();
+		// Configure System for Running
+		Scanner keyboard = new Scanner(System.in); 
+		String functionNumber = "-99";
+		boolean keepAppOpen = true;
 	
-		catch(Exception e) {
-			System.out.println("PROGRAM TERMINATED - ERROR MESSAGE:" + e.getMessage());
-		} // end try-catch
+		while (keepAppOpen == true) {
+		
+			//Present list of functionality and get selection
+			CustomerOptions();
+			functionNumber = keyboard.next();
+	
+			switch (functionNumber) {
+	
+			case "1":
+				System.out.printf("Enter Publication Name: \n");
+				String orderPublication = keyboard.next();
+				System.out.printf("Enter Days of Delivery: \n");
+				String daysOfDelivery = keyboard.next();
+				System.out.printf("Enter Customer Id: \n");
+				String custID = keyboard.next();
+			
+
+			
+				Customer custObj = new Customer(custID, orderPublication, daysOfDelivery);
+			
+				//Insert Customer Details into the database
+				boolean insertResult = dao.insertCustomerDetailsAccount(orderObj);
+				if (insertResult == true)
+					System.out.println("Order Details Saved");
+				else 
+					System.out.println("ERROR: Order Details NOT Saved");
+				break;
+				
+			case "2": 
+				ResultSet rSet = dao.retrieveAllOrderAccounts();
+				if (rSet == null) {
+					System.out.println("No Records Found");
+					break;
+				}
+				else {
+					boolean tablePrinted = printOrderTable(rSet);
+					if (tablePrinted == true)
+						rSet.close();
+				}
+				break;
+				
+			case "3":
+				Scanner scanner3 = new Scanner(System.in);
+				
+				System.out.println("Update Order Details");
+				
+				System.out.println("Press any key to return to the main menu...");
+		        scanner3.nextLine();
+				break;
+			case "4":
+				System.out.println("Enter Customer Id to be deleted or -99 to Clear all Rows");
+				String deleteCustId = keyboard.next();
+				boolean deleteResult = dao.deleteCustomerById(Integer.parseInt(deleteCustId));
+				if ((deleteResult == true) && (deleteCustId.equals("-99")))
+					System.out.println("Order Table Emptied");
+				else if (deleteResult == true)
+					System.out.println("Order Deleted");
+				else 
+					System.out.println("ERROR: Order Details NOT Deleted or Do Not Exist");
+				break;
+		
+			case "99":
+				System.out.println("Main Menue");
+				CommandLine.main(args);
+				break;
+		
+			default:
+				System.out.println("No Valid Function Selected");
+				break;
+			} // end switch
+	
+		}// end while
+	
+		//Tidy up Resources
+		keyboard.close();
+	
+	}
+
+	catch(Exception e) {
+		System.out.println("PROGRAM TERMINATED - ERROR MESSAGE:" + e.getMessage());
+	} // end try-catch
 	}
 
 }
