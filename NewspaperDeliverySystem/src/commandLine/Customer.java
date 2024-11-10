@@ -2,7 +2,7 @@ package commandLine;
 
 public class Customer {
     
-    private static final String custFName = null;
+    
 	private int id;
     private String Fname;
     private String Sname;
@@ -10,9 +10,9 @@ public class Customer {
     private String phoneNumber;
     private String email;
     private String eircode;
-    private int frequency;
+//    private int frequency;
     private String daysOfDelivery;
-	private String custSName;
+	
     
     // Constructor
     public Customer(String custFName, String custSName, String custAddr, String custPhone, String custEircode, String daysOfDelivery, String custEmail) throws CustomerExceptionHandler {
@@ -23,7 +23,7 @@ public class Customer {
         setPhoneNumber(custPhone);
         setEmail(custEmail);
         setEircode(custEircode);
-        setFrequency(frequency);
+//        setFrequency(frequency);
         setDaysOfDelivery(daysOfDelivery);
     }
 
@@ -56,9 +56,9 @@ public class Customer {
         return eircode;
     }
 
-    public int getFrequency() {
-        return frequency;
-    }
+//    public int getFrequency() {
+//        return frequency;
+//    }
 
     public String getDaysOfDelivery() {
         return daysOfDelivery;
@@ -66,12 +66,12 @@ public class Customer {
 
     // Setter methods with validation
 	public void setFname(String fname) throws CustomerExceptionHandler{
-        validateSName(custFName);
+        validateSName(fname);
 		Fname = fname;
 	}
 	
 	public void setSname(String sname) throws CustomerExceptionHandler{
-        validateFName(custSName);
+        validateFName(sname);
 		Sname = sname;
 	}
 	
@@ -99,10 +99,10 @@ public class Customer {
         this.eircode = custEircode;
     }
 
-    public void setFrequency(int frequency) throws CustomerExceptionHandler {
-        validateFrequency(frequency);
-        this.frequency = frequency;
-    }
+//    public void setFrequency(int frequency) throws CustomerExceptionHandler {
+//        validateFrequency(frequency);
+//        this.frequency = frequency;
+//    }
 
     public void setDaysOfDelivery(String daysOfDelivery) throws CustomerExceptionHandler {
         validateDaysOfDelivery(daysOfDelivery);
@@ -162,10 +162,10 @@ public class Customer {
             throw new CustomerExceptionHandler("Customer Eircode is invalid");
     }
 
-    public static void validateFrequency(int frequency) throws CustomerExceptionHandler {
-        if (frequency <= 0)
-            throw new CustomerExceptionHandler("Frequency must be a positive integer");
-    }
+//    public static void validateFrequency(int frequency) throws CustomerExceptionHandler {
+//        if (frequency <= 0)
+//            throw new CustomerExceptionHandler("Frequency must be a positive integer");
+//    }
 
     public static void validateDaysOfDelivery(String daysOfDelivery) throws CustomerExceptionHandler {
         if (daysOfDelivery == null || daysOfDelivery.isEmpty())
