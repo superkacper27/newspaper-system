@@ -19,6 +19,34 @@ public class OrderCm {
 	}
 	
 	
+private static boolean printOrderTable(ResultSet rs) throws Exception {
+		
+		//Print The Contents of the Full Customer Table
+		
+		System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println("Table: " + rs.getMetaData().getTableName(1));
+		for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+			System.out.printf("%30s",rs.getMetaData().getColumnName(i));
+		}
+		System.out.println();
+		while (rs.next()) {
+			int id = rs.getInt("id");
+			String publication = rs.getString("orderpublication");
+			String days = rs.getString("orderdays");
+
+
+			System.out.printf("%30s", id);
+			System.out.printf("%30s", publication);
+			System.out.printf("%30s", days);
+
+
+			System.out.println();
+		}// end while
+		System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
+		
+		return true;
+		
+	}
 	
 public static void main(String[] args) {
 		
@@ -53,10 +81,10 @@ public static void main(String[] args) {
 			
 
 			
-				Customer custObj = new Customer(custID, orderPublication, daysOfDelivery);
+				Order orderObj = new Order(custID, orderPublication, daysOfDelivery);
 			
 				//Insert Customer Details into the database
-				boolean insertResult = dao.insertCustomerDetailsAccount(orderObj);
+				boolean insertResult = dao.insertOrderDetailsAccount(orderObj);
 				if (insertResult == true)
 					System.out.println("Order Details Saved");
 				else 

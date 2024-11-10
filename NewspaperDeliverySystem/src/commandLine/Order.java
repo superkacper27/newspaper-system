@@ -31,7 +31,7 @@ public class Order {
 		ID = iD;
 	}
 	
-	public order(String publication, String days, int iD) throws OrderExceptionHandler {
+	public Order(String publication, String days, int iD) throws OrderExceptionHandler {
 	    validatePublication(publication); 
 	    validateDays(days);               
 	    this.publication = publication;
