@@ -30,7 +30,7 @@ public class ModifyDeliveryDocket extends TestCase {
     }
 
     
-    // Test 3: Order for Tuesday
+    //Test 3: Order for Tuesday
     //Input: Day = Tuesday
     //Expected Output: Publication = The Irish Independent
 
@@ -50,7 +50,7 @@ public class ModifyDeliveryDocket extends TestCase {
         assertEquals("The Irish Times", deliveryDocket.getCustOrder());
     }
     
-    // Test: Order for Wednesday
+    //Test: Order for Wednesday
     //Input: Day = Wednesday
     //Expected Output: No publication
 
