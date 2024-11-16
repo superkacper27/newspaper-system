@@ -81,27 +81,27 @@ public static void main(String[] args) {
 			
 
 			
-				Order orderObj = new Order(custID, orderPublication, daysOfDelivery);
-			
-				//Insert Customer Details into the database
-				boolean insertResult = dao.insertOrderDetailsAccount(orderObj);
-				if (insertResult == true)
-					System.out.println("Order Details Saved");
-				else 
-					System.out.println("ERROR: Order Details NOT Saved");
-				break;
-				
-			case "2": 
-				ResultSet rSet = dao.retrieveAllOrderAccounts();
-				if (rSet == null) {
-					System.out.println("No Records Found");
-					break;
-				}
-				else {
-					boolean tablePrinted = printOrderTable(rSet);
-					if (tablePrinted == true)
-						rSet.close();
-				}
+//				Order orderObj = new Order(custID, orderPublication, daysOfDelivery);
+//			
+//				//Insert Customer Details into the database
+//				boolean insertResult = dao.insertOrderDetailsAccount(orderObj);
+//				if (insertResult == true)
+//					System.out.println("Order Details Saved");
+//				else 
+//					System.out.println("ERROR: Order Details NOT Saved");
+//				break;
+//				
+//			case "2": 
+//				ResultSet rSet = dao.retrieveAllOrderAccounts();
+//				if (rSet == null) {
+//					System.out.println("No Records Found");
+//					break;
+//				}
+//				else {
+//					boolean tablePrinted = printOrderTable(rSet);
+//					if (tablePrinted == true)
+//						rSet.close();
+//				}
 				break;
 				
 			case "3":

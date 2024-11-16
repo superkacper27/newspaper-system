@@ -29,7 +29,7 @@ private static boolean printCustomerTable(ResultSet rs) throws Exception {
 		}
 		System.out.println();
 		while (rs.next()) {
-			int id = rs.getInt("id");
+			//int id = rs.getInt("id");
 			String fname = rs.getString("custfname");
 			String sname = rs.getString("custsname");
 			String addr = rs.getString("custaddr");
@@ -38,7 +38,7 @@ private static boolean printCustomerTable(ResultSet rs) throws Exception {
 			String daysofd = rs.getString("custsname");
 			String email = rs.getString("custsname");
 
-			System.out.printf("%30s", id);
+			//System.out.printf("%30s", id);
 			System.out.printf("%30s", fname);
 			System.out.printf("%30s", sname);
 			System.out.printf("%30s", addr);
@@ -81,9 +81,11 @@ public static void main(String[] args) {
 				switch (functionNumber) {
 		
 				case "1":
-					System.out.printf("Enter Customers Name: \n");
+//					System.out.printf("Enter Customers ID: \n");
+//					String custID = keyboard.next();
+					System.out.printf("Enter Customers First Name: \n");
 					String custFName = keyboard.next();
-					System.out.printf("Enter Customers Name: \n");
+					System.out.printf("Enter Customers Second Name: \n");
 					String custSName = keyboard.next();
 					System.out.printf("Enter Customer Address: \n");
 					String custAddr = keyboard.next();

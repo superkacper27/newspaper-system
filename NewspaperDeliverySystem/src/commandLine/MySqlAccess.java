@@ -44,22 +44,23 @@ public class MySqlAccess {
 		try {
 		
 			//Create prepared statement to issue SQL query to the database
-			preparedStatement = connect.prepareStatement("insert into newpaperSystem.customer values (default, ?, ?, ?, ?, ? ,?, ?, ?)");
-			preparedStatement.setInt(1, c. getId());
-			preparedStatement.setString(2, c.getFname());
-			preparedStatement.setString(3, c.getSname());
-			preparedStatement.setString(4, c.getAddress());
-			preparedStatement.setString(5, c.getPhoneNumber());
-			preparedStatement.setString(6, c.getEircode());
+			preparedStatement = connect.prepareStatement("insert into customer values (?, ?, ?, ?, ?, ?, ?)");
+			//preparedStatement.setString(1, c. getId());
+			preparedStatement.setString(1, c.getFname());
+			preparedStatement.setString(2, c.getSname());
+			preparedStatement.setString(3, c.getAddress());
+			preparedStatement.setString(4, c.getPhoneNumber());
+			preparedStatement.setString(5, c.getEircode());
 			//preparedStatement.setInt(7, c.getFrequency());
-			preparedStatement.setString(7, c.getDaysOfDelivery());
-			preparedStatement.setString(8, c.getEmail());
+			preparedStatement.setString(6, c.getDaysOfDelivery());
+			preparedStatement.setString(7, c.getEmail());
 			preparedStatement.executeUpdate();
 		
 	 
 		}
 		catch (Exception e) {
 			insertSucessfull = false;
+			e.printStackTrace();
 		}
 	
 		return insertSucessfull;
@@ -70,7 +71,7 @@ public class MySqlAccess {
 			
 			try {
 				statement = connect.createStatement();
-				resultSet = statement.executeQuery("Select * from newpaperSystem.customer");
+				resultSet = statement.executeQuery("Select * from customer");
 			}catch(Exception e) {
 				resultSet = null;
 			}
@@ -96,9 +97,12 @@ public class MySqlAccess {
 			return deleteSucessfull;
 			
 		}
-		public boolean insertOrderDetails(Order d)
-		{
-			return false;
-			
-		}
+//		public boolean insertOrderDetails(Order d)
+//		{
+//			boolean insertSucessfull = true;
+//			
+//			
+//			
+//		}
+		
 }

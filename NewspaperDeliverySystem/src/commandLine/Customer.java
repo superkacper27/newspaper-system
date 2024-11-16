@@ -3,7 +3,7 @@ package commandLine;
 public class Customer {
     
 
-	private int id;
+	//private String id;
     private String Fname;
     private String Sname;
     private String address;
@@ -16,7 +16,7 @@ public class Customer {
     
     // Constructor
     public Customer(String custFName, String custSName, String custAddr, String custPhone, String custEircode, String daysOfDelivery, String custEmail) throws CustomerExceptionHandler {
-        this.id = 0; // Default id for now
+      //  setId(custID); 
         setFname(custFName);
         setSname(custSName);
         setAddress(custAddr);
@@ -36,9 +36,9 @@ public class Customer {
 		return Sname;
 	}
 	
-    public int getId() {
-        return id;
-    }
+//    public String getId() {
+//        return id;
+//    }
 
     public String getAddress() {
         return address;
@@ -75,9 +75,10 @@ public class Customer {
 		Sname = custSName;
 	}
 	
-    public void setId(int custId) {
-        this.id = custId;
-    }
+//    public void setId(String custID) throws CustomerExceptionHandler{
+//        validateID(custID);
+//		id = custID;
+//    }
 
     public void setAddress(String custAddr) throws CustomerExceptionHandler {
         validateAddress(custAddr);
@@ -131,6 +132,17 @@ public class Customer {
         else if (!custSName.matches("^[a-zA-Z ]+$")) // Check for symbols
             throw new CustomerExceptionHandler("Customer Name contains invalid characters");
     }
+    
+//    public static void validateID(String custID) throws CustomerExceptionHandler {
+//        if (custID == null || custID.isEmpty())
+//            throw new CustomerExceptionHandler("Customer ID NOT specified");
+//        else if (custID.length() < 2)
+//            throw new CustomerExceptionHandler("Customer ID does not meet minimum length requirements");
+//        else if (custID.length() > 50)
+//            throw new CustomerExceptionHandler("Customer ID exceeds maximum length requirements");
+//        else if (!custID.matches("^[0-9 ]+$")) // Check for symbols
+//            throw new CustomerExceptionHandler("Customer ID contains invalid characters");
+//    }
 
     public static void validateAddress(String custAddr) throws CustomerExceptionHandler {
         if (custAddr == null || custAddr.isEmpty())
