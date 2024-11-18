@@ -15,8 +15,8 @@ public class Customer {
 	
     
     // Constructor
-    public Customer(String custFName, String custSName, String custAddr, String custPhone, String custEircode, String daysOfDelivery, String custEmail) throws CustomerExceptionHandler {
-        this.id = 0; // Default id for now
+    public Customer(String custFName, String custSName, String custAddr, String custPhone, String custEircode, String daysOfDelivery, String custEmail, int custID) throws CustomerExceptionHandler {
+        //this.id = 0; // Default id for now
         setFname(custFName);
         setSname(custSName);
         setAddress(custAddr);
@@ -25,6 +25,7 @@ public class Customer {
         setEircode(custEircode);
 //        setFrequency(frequency);
         setDaysOfDelivery(daysOfDelivery);
+        setId(custID);
     }
 
     // Getter methods
@@ -139,6 +140,18 @@ public class Customer {
             throw new CustomerExceptionHandler("Customer Address does not meet minimum length requirements");
         else if (custAddr.length() > 60)
             throw new CustomerExceptionHandler("Customer Address exceeds maximum length requirements");
+    }
+    
+    public static void validateID(int custID) throws CustomerExceptionHandler
+    {
+    	if (custID < 0)
+    	{
+    		throw new CustomerExceptionHandler("Customer ID needs to be a primary number");
+    	}
+    	else if (custID > 999)
+    	{
+    		throw new CustomerExceptionHandler("Customer ID is past max allowed id numbers");
+    	}
     }
 
     public static void validatePhoneNumber(String custPhone) throws CustomerExceptionHandler {

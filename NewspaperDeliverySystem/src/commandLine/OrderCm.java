@@ -12,7 +12,7 @@ public class OrderCm {
 		System.out.println("2. View Order");
 		System.out.println("3. Update Order");
 		System.out.println("4. Delete Order");
-		System.out.println("99. Main Menue");
+		System.out.println("99. Main Menu");
 		System.out.println("=============================================");
 		System.out.println(" ");
 	}
@@ -78,7 +78,7 @@ public static void main(String[] args) {
 					break;
 			
 				case "99":
-					System.out.println("Main Menue");
+					System.out.println("Main menu");
 					CommandLine.main(args);
 					break;
 			

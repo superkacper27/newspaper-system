@@ -12,7 +12,7 @@ public class InvoiceCm {
 		System.out.println("2. View Invoices");
 		System.out.println("3. Update Invoices");
 		System.out.println("4. Delete Invoices");
-		System.out.println("99. Main Menue");
+		System.out.println("99. Main menu");
 		System.out.println("=============================================");
 		System.out.println(" ");
 	}
@@ -78,7 +78,7 @@ public static void main(String[] args) {
 					break;
 			
 				case "99":
-					System.out.println("Main Menue");
+					System.out.println("Main menu");
 					CommandLine.main(args);
 					break;
 			

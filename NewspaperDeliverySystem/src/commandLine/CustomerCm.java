@@ -13,7 +13,7 @@ public class CustomerCm {
 		System.out.println("2. View Customer Table");
 		System.out.println("3. Update Customer Details");
 		System.out.println("4. Delete Customer");
-		System.out.println("99. Main Menue");
+		System.out.println("99. Main Menu");
 		System.out.println("=============================================");
 		System.out.println(" ");
 	}
@@ -30,15 +30,16 @@ private static boolean printCustomerTable(ResultSet rs) throws Exception {
 		System.out.println();
 		while (rs.next()) {
 			int id = rs.getInt("id");
-			String fname = rs.getString("custfname");
-			String sname = rs.getString("custsname");
-			String addr = rs.getString("custaddr");
-			String phone = rs.getString("custphone");
-			String eircode = rs.getString("custericode");
-			String daysofd = rs.getString("custdays");
-			String email = rs.getString("custemail");
+			String fname = rs.getString("FirstName");
+			String sname = rs.getString("LastName");
+			String addr = rs.getString("Address");
+			String phone = rs.getString("PhoneNumber");
+			String eircode = rs.getString("Eircode");
+			String daysofd = rs.getString("DeliveryDays");
+			String email = rs.getString("Email");
+			
 
-			System.out.printf("%30s", id);
+			
 			System.out.printf("%30s", fname);
 			System.out.printf("%30s", sname);
 			System.out.printf("%30s", addr);
@@ -46,6 +47,7 @@ private static boolean printCustomerTable(ResultSet rs) throws Exception {
 			System.out.printf("%30s", eircode);
 			System.out.printf("%30s", daysofd);
 			System.out.printf("%30s", email);
+			System.out.printf("%30s", id);
 
 			System.out.println();
 		}// end while
@@ -95,9 +97,11 @@ public static void main(String[] args) {
 					String daysOfDelivery = keyboard.next();
 					System.out.printf("Enter Customer Email: \n");
 					String custEmail = keyboard.next();
+					System.out.printf("Enter Customer ID: \n");
+					int custID = keyboard.nextInt();
 
 				
-					Customer custObj = new Customer(custFName, custSName, custAddr, custPhone, custEircode, daysOfDelivery, custEmail);
+					Customer custObj = new Customer(custFName, custSName, custAddr, custPhone, custEircode, daysOfDelivery, custEmail, custID);
 				
 					//Insert Customer Details into the database
 					boolean insertResult = dao.insertCustomerDetailsAccount(custObj);
@@ -124,9 +128,22 @@ public static void main(String[] args) {
 					Scanner scanner3 = new Scanner(System.in);
 					
 					System.out.println("Update Customer Details");
+					System.out.println("Enter what column you wish to edit: ");
+					String editTarget = scanner3.nextLine();
+					System.out.println("Enter the change here");
+					String editValue = scanner3.nextLine();
+					System.out.println("Enter the Id you wish to change");
+					int editID = scanner3.nextInt();
+					boolean editResult = dao.editCustomer(editTarget, editValue, editID);
+					if(editResult == true)
+					{
+						System.out.println("Customer data changed!");
+					}
+					else
+					{
+						System.out.println("ERROR: Customer Details NOT Edited or Do not Exist");
+					}
 					
-					System.out.println("Press any key to return to the main menu...");
-			        scanner3.nextLine();
 					break;
 				case "4":
 					System.out.println("Enter Customer Id to be deleted or -99 to Clear all Rows");
@@ -141,7 +158,7 @@ public static void main(String[] args) {
 					break;
 			
 				case "99":
-					System.out.println("Main Menue");
+					System.out.println("Main Menu");
 					CommandLine.main(args);
 					break;
 			
