@@ -44,8 +44,8 @@ public class MySqlAccess {
 		try {
 		
 			//Create prepared statement to issue SQL query to the database
-			preparedStatement = connect.prepareStatement("insert into customer values (?, ?, ?, ?, ?, ?, ?)");
-			//preparedStatement.setString(1, c. getId());
+			preparedStatement = connect.prepareStatement("insert into customer values (?, ?, ?, ?, ?, ?, ?, ?)");
+			
 			preparedStatement.setString(1, c.getFname());
 			preparedStatement.setString(2, c.getSname());
 			preparedStatement.setString(3, c.getAddress());
@@ -54,6 +54,7 @@ public class MySqlAccess {
 			//preparedStatement.setInt(7, c.getFrequency());
 			preparedStatement.setString(6, c.getDaysOfDelivery());
 			preparedStatement.setString(7, c.getEmail());
+			preparedStatement.setInt(8, c.getId());
 			preparedStatement.executeUpdate();
 		
 	 
@@ -78,6 +79,20 @@ public class MySqlAccess {
 			return resultSet;
 		}
 		
+		public boolean editCustomer(String editTarget,String editValue ,int custID)
+		{
+			boolean editSucessfull = true;
+			
+			try {
+				preparedStatement = connect.prepareStatement("update customer set " + editTarget + " = '"+ editValue + "'where id = "+ custID);
+				preparedStatement.executeUpdate();
+			}
+			catch(Exception e)
+			{
+				editSucessfull = false;
+			}
+			return editSucessfull;
+		}
 		public boolean deleteCustomerById(int custID) {
 			
 			boolean deleteSucessfull = true;
@@ -85,9 +100,9 @@ public class MySqlAccess {
 			try {
 				
 				if(custID == -99)
-					preparedStatement = connect.prepareStatement("delete from newpaperSystem.customer");
+					preparedStatement = connect.prepareStatement("delete from customer");
 				else
-					preparedStatement = connect.prepareStatement("delete from newpaperSystem.customer where id = " + custID);
+					preparedStatement = connect.prepareStatement("delete from customer where id = " + custID);
 				preparedStatement.executeUpdate();
 
 			}catch (Exception e) {
@@ -105,4 +120,97 @@ public class MySqlAccess {
 //			
 //		}
 		
+public ResultSet retrieveAllOrderAccounts() {
+			
+			try {
+				statement = connect.createStatement();
+				resultSet = statement.executeQuery("Select * from order");
+			}catch(Exception e) {
+				resultSet = null;
+			}
+			return resultSet;
+		}
+		
+		public boolean editOrder(String editTarget,String editValue ,int orderID)
+		{
+			boolean editSucessfull = true;
+			
+			try {
+				preparedStatement = connect.prepareStatement("update order set " + editTarget + " = '"+ editValue + "'where id = "+ orderID);
+				preparedStatement.executeUpdate();
+			}
+			catch(Exception e)
+			{
+				editSucessfull = false;
+			}
+			return editSucessfull;
+		}
+		public boolean deleteOrderById(int orderID) {
+			
+			boolean deleteSucessfull = true;
+			
+			try {
+				
+				if(orderID == -99)
+					preparedStatement = connect.prepareStatement("delete from order");
+				else
+					preparedStatement = connect.prepareStatement("delete from order where id = " + orderID);
+				preparedStatement.executeUpdate();
+
+			}catch (Exception e) {
+				deleteSucessfull = false;
+			}
+			
+			return deleteSucessfull;
+			
+		}
+		
+//		public boolean insertDeliveryDocket(DeliveryDocket f){
+//			boolean insertSucessfull = true;
+//		}
+		
+		public ResultSet retrieveAllDeliveryDockets() {
+			
+			try {
+				statement = connect.createStatement();
+				resultSet = statement.executeQuery("Select * from deliverydocket");
+			}catch(Exception e) {
+				resultSet = null;
+			}
+			return resultSet;
+		}
+		
+		public boolean editDeliveryDocket(String editTarget,String editValue ,int deliveryDocketID)
+		{
+			boolean editSucessfull = true;
+			
+			try {
+				preparedStatement = connect.prepareStatement("update deliverydocket set " + editTarget + " = '"+ editValue + "'where id = "+ deliveryDocketID);
+				preparedStatement.executeUpdate();
+			}
+			catch(Exception e)
+			{
+				editSucessfull = false;
+			}
+			return editSucessfull;
+		}
+		public boolean deleteDeliveryDocketById(int deliveryDocketID) {
+			
+			boolean deleteSucessfull = true;
+			
+			try {
+				
+				if(deliveryDocketID == -99)
+					preparedStatement = connect.prepareStatement("delete from deliverydocket");
+				else
+					preparedStatement = connect.prepareStatement("delete from deliverydocket where id = " + deliveryDocketID);
+				preparedStatement.executeUpdate();
+
+			}catch (Exception e) {
+				deleteSucessfull = false;
+			}
+			
+			return deleteSucessfull;
+			
+		}
 }
