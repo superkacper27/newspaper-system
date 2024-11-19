@@ -98,4 +98,8 @@ public class DeliveryDocket {
     public void deliveryStatus() {
         this.orderSuccess = !custOrder.isBlank();
     }
+
+	public void deleteDocket() {
+	    this.custOrder = "";		
+	}
 }
