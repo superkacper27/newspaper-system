@@ -3,7 +3,7 @@ package commandLine;
 public class Customer {
     
 
-	//private String id;
+	private int id;
     private String Fname;
     private String Sname;
     private String address;
@@ -15,7 +15,7 @@ public class Customer {
 
     
     // Constructor
-    public Customer(String custFName, String custSName, String custAddr, String custPhone, String custEircode, String daysOfDelivery, String custEmail) throws CustomerExceptionHandler {
+    public Customer(String custFName, String custSName, String custAddr, String custPhone, String custEircode, String daysOfDelivery, String custEmail, int custID) throws CustomerExceptionHandler {
       //  setId(custID); 
         setFname(custFName);
         setSname(custSName);
@@ -36,9 +36,9 @@ public class Customer {
 		return Sname;
 	}
 	
-//    public String getId() {
-//        return id;
-//    }
+    public int getId() {
+        return id;
+    }
 
     public String getAddress() {
         return address;
@@ -75,10 +75,10 @@ public class Customer {
 		Sname = custSName;
 	}
 	
-//    public void setId(String custID) throws CustomerExceptionHandler{
-//        validateID(custID);
-//		id = custID;
-//    }
+    public void setId(int custID) throws CustomerExceptionHandler{
+       // validateID(custID);
+		id = custID;
+    }
 
     public void setAddress(String custAddr) throws CustomerExceptionHandler {
         validateAddress(custAddr);
@@ -133,7 +133,7 @@ public class Customer {
             throw new CustomerExceptionHandler("Customer Name contains invalid characters");
     }
     
-//    public static void validateID(String custID) throws CustomerExceptionHandler {
+//    public static void validateID(int custID) throws CustomerExceptionHandler {
 //        if (custID == null || custID.isEmpty())
 //            throw new CustomerExceptionHandler("Customer ID NOT specified");
 //        else if (custID.length() < 2)

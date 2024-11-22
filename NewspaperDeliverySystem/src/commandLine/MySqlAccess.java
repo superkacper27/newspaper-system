@@ -112,15 +112,38 @@ public class MySqlAccess {
 			return deleteSucessfull;
 			
 		}
-//		public boolean insertOrderDetails(Order d)
-//		{
-//			boolean insertSucessfull = true;
-//			
-//			
-//			
-//		}
+		public boolean insertOrderDetails(Order d)
+		{
+			boolean insertSucessfull = true;
+			
+			//Add Code here to call embedded SQL to insert Customer into DB
 		
-public ResultSet retrieveAllOrderAccounts() {
+			try {
+			
+				//Create prepared statement to issue SQL query to the database
+				preparedStatement = connect.prepareStatement("insert into customer values (?, ?, ?)");
+				
+				preparedStatement.setString(1, d.getID());
+				preparedStatement.setString(2, d.getPublication());
+				preparedStatement.setString(3, d.getDays());
+
+	
+				preparedStatement.executeUpdate();
+			
+		 
+			}
+			catch (Exception e) {
+				insertSucessfull = false;
+				e.printStackTrace();
+			}
+		
+			return insertSucessfull;
+			
+			
+			
+		}
+		
+		public ResultSet retrieveAllOrderAccounts() {
 			
 			try {
 				statement = connect.createStatement();

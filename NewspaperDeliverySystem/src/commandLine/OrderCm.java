@@ -81,39 +81,52 @@ public static void main(String[] args) {
 			
 
 			
-//				Order orderObj = new Order(custID, orderPublication, daysOfDelivery);
-//			
-//				//Insert Customer Details into the database
-//				boolean insertResult = dao.insertOrderDetailsAccount(orderObj);
-//				if (insertResult == true)
-//					System.out.println("Order Details Saved");
-//				else 
-//					System.out.println("ERROR: Order Details NOT Saved");
-//				break;
-//				
-//			case "2": 
-//				ResultSet rSet = dao.retrieveAllOrderAccounts();
-//				if (rSet == null) {
-//					System.out.println("No Records Found");
-//					break;
-//				}
-//				else {
-//					boolean tablePrinted = printOrderTable(rSet);
-//					if (tablePrinted == true)
-//						rSet.close();
-//				}
+				Order orderObj = new Order(orderPublication, daysOfDelivery, custID);
+			
+				//Insert Customer Details into the database
+				boolean insertResult = dao.insertOrderDetails(orderObj);
+				if (insertResult == true)
+					System.out.println("Order Details Saved");
+				else 
+					System.out.println("ERROR: Order Details NOT Saved");
+				break;
+				
+			case "2": 
+				ResultSet rSet = dao.retrieveAllOrderAccounts();
+				if (rSet == null) {
+					System.out.println("No Records Found");
+					break;
+				}
+				else {
+					boolean tablePrinted = printOrderTable(rSet);
+					if (tablePrinted == true)
+						rSet.close();
+				}
 				break;
 				
 			case "3":
 				Scanner scanner3 = new Scanner(System.in);
 				
 				System.out.println("Update Order Details");
+				System.out.println("Enter what column you wish to edit: ");
+				String editTarget = scanner3.nextLine();
+				System.out.println("Enter the change here");
+				String editValue = scanner3.nextLine();
+				System.out.println("Enter the Id you wish to change");
+				int editID = scanner3.nextInt();
+				boolean editResult = dao.editOrder(editTarget, editValue, editID);
+				if(editResult == true)
+				{
+					System.out.println("Order data changed!");
+				}
+				else
+				{
+					System.out.println("ERROR: Order Details NOT Edited or Do not Exist");
+				}
 				
-				System.out.println("Press any key to return to the main menu...");
-		        scanner3.nextLine();
 				break;
 			case "4":
-				System.out.println("Enter Customer Id to be deleted or -99 to Clear all Rows");
+				System.out.println("Enter Order Id to be deleted or -99 to Clear all Rows");
 				String deleteCustId = keyboard.next();
 				boolean deleteResult = dao.deleteCustomerById(Integer.parseInt(deleteCustId));
 				if ((deleteResult == true) && (deleteCustId.equals("-99")))
