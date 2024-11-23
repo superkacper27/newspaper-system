@@ -112,19 +112,32 @@ public class MySqlAccess {
 			return deleteSucessfull;
 			
 		}
-//		public boolean insertOrderDetails(Order d)
-//		{
-//			boolean insertSucessfull = true;
-//			
-//			
-//			
-//		}
+		public boolean insertOrderDetails(Order d)
+		{
+			boolean insertSucessfull = true;
+			
+			try {
+				preparedStatement = connect.prepareStatement("insert into orders values (?, ?, ?)");
+				preparedStatement.setInt(1, d.getID());
+				preparedStatement.setString(2, d.getPublication());
+				preparedStatement.setString(3, d.getDays());
+				preparedStatement.executeUpdate();
+			}
+			catch(Exception e)
+			{
+				insertSucessfull = false;
+			}
+			return insertSucessfull;
+			
+			
+			
+		}
 		
 public ResultSet retrieveAllOrderAccounts() {
 			
 			try {
 				statement = connect.createStatement();
-				resultSet = statement.executeQuery("Select * from order");
+				resultSet = statement.executeQuery("Select * from orders");
 			}catch(Exception e) {
 				resultSet = null;
 			}
@@ -136,7 +149,7 @@ public ResultSet retrieveAllOrderAccounts() {
 			boolean editSucessfull = true;
 			
 			try {
-				preparedStatement = connect.prepareStatement("update order set " + editTarget + " = '"+ editValue + "'where id = "+ orderID);
+				preparedStatement = connect.prepareStatement("update orders set " + editTarget + " = '"+ editValue + "'where id = "+ orderID);
 				preparedStatement.executeUpdate();
 			}
 			catch(Exception e)
@@ -152,12 +165,13 @@ public ResultSet retrieveAllOrderAccounts() {
 			try {
 				
 				if(orderID == -99)
-					preparedStatement = connect.prepareStatement("delete from order");
+					preparedStatement = connect.prepareStatement("delete from orders");
 				else
-					preparedStatement = connect.prepareStatement("delete from order where id = " + orderID);
+					preparedStatement = connect.prepareStatement("delete from orders where id = " + orderID);
 				preparedStatement.executeUpdate();
 
 			}catch (Exception e) {
+				
 				deleteSucessfull = false;
 			}
 			
@@ -213,4 +227,6 @@ public ResultSet retrieveAllOrderAccounts() {
 			return deleteSucessfull;
 			
 		}
+
+		
 }

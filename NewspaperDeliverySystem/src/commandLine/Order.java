@@ -5,8 +5,21 @@ public class Order {
 
 	private String publication;
 	private String days;
+	private int id;
 	
 	
+//	public Order(int orderID, String orderPublication, String daysOfDelivery) {
+//		// TODO Auto-generated constructor stub
+//	}
+	public void setID(int id)
+	{
+		this.id = id;
+	}
+	
+	public int getID()
+	{
+		return id;
+	}
 	public String getPublication() {
 		return publication;
 	}
@@ -20,7 +33,7 @@ public class Order {
 		this.days = days;
 	}
 	
-	public void order(String publication, String days) throws OrderExceptionHandler {
+	public Order(int orderId, String publication, String days) throws OrderExceptionHandler {
 		try {
 			validatePublication(publication);
 			validateDays(days);
