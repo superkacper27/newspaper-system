@@ -82,7 +82,7 @@ public static void main(String[] args) {
 			
 
 			
-				Order orderObj = new Order(daysOfDelivery, orderPublication, custID);
+				Order orderObj = new Order(custID, daysOfDelivery, orderPublication);
 			
 				//Insert Customer Details into the database
 				boolean insertResult = dao.insertOrderDetails(orderObj);
@@ -129,7 +129,7 @@ public static void main(String[] args) {
 			case "4":
 				System.out.println("Enter Order Id to be deleted or -99 to Clear all Rows");
 				String deleteOrderId = keyboard.next();
-				boolean deleteResult = dao.deleteCustomerById(Integer.parseInt(deleteOrderId));
+				boolean deleteResult = dao.deleteOrderById(Integer.parseInt(deleteOrderId));
 				if ((deleteResult == true) && (deleteOrderId.equals("-99")))
 					System.out.println("Order Table Emptied");
 				else if (deleteResult == true)

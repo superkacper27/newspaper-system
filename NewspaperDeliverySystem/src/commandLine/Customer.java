@@ -2,7 +2,7 @@ package commandLine;
 
 public class Customer {
     
-    
+
 	private int id;
     private String Fname;
     private String Sname;
@@ -10,22 +10,21 @@ public class Customer {
     private String phoneNumber;
     private String email;
     private String eircode;
-//    private int frequency;
+   // private int frequency;
     private String daysOfDelivery;
-	
+
     
     // Constructor
     public Customer(String custFName, String custSName, String custAddr, String custPhone, String custEircode, String daysOfDelivery, String custEmail, int custID) throws CustomerExceptionHandler {
-        //this.id = 0; // Default id for now
+    	setId(custID); 
         setFname(custFName);
         setSname(custSName);
         setAddress(custAddr);
         setPhoneNumber(custPhone);
         setEmail(custEmail);
         setEircode(custEircode);
-//        setFrequency(frequency);
+       // setFrequency(frequency);
         setDaysOfDelivery(daysOfDelivery);
-        setId(custID);
     }
 
     // Getter methods
@@ -66,18 +65,19 @@ public class Customer {
     }
 
     // Setter methods with validation
-	public void setFname(String fname) throws CustomerExceptionHandler{
-        validateSName(fname);
-		Fname = fname;
+	public void setFname(String custFName) throws CustomerExceptionHandler{
+        validateFName(custFName);
+		Fname = custFName;
 	}
 	
-	public void setSname(String sname) throws CustomerExceptionHandler{
-        validateFName(sname);
-		Sname = sname;
+	public void setSname(String custSName) throws CustomerExceptionHandler{
+        validateSName(custSName);
+		Sname = custSName;
 	}
 	
-    public void setId(int custId) {
-        this.id = custId;
+    public void setId(int custID) throws CustomerExceptionHandler{
+       // validateID(custID);
+		id = custID;
     }
 
     public void setAddress(String custAddr) throws CustomerExceptionHandler {
@@ -132,6 +132,17 @@ public class Customer {
         else if (!custSName.matches("^[a-zA-Z ]+$")) // Check for symbols
             throw new CustomerExceptionHandler("Customer Name contains invalid characters");
     }
+    
+//    public static void validateID(int custID) throws CustomerExceptionHandler {
+//        if (custID == null || custID.isEmpty())
+//            throw new CustomerExceptionHandler("Customer ID NOT specified");
+//        else if (custID.length() < 2)
+//            throw new CustomerExceptionHandler("Customer ID does not meet minimum length requirements");
+//        else if (custID.length() > 50)
+//            throw new CustomerExceptionHandler("Customer ID exceeds maximum length requirements");
+//        else if (!custID.matches("^[0-9 ]+$")) // Check for symbols
+//            throw new CustomerExceptionHandler("Customer ID contains invalid characters");
+//    }
 
     public static void validateAddress(String custAddr) throws CustomerExceptionHandler {
         if (custAddr == null || custAddr.isEmpty())
@@ -140,18 +151,6 @@ public class Customer {
             throw new CustomerExceptionHandler("Customer Address does not meet minimum length requirements");
         else if (custAddr.length() > 60)
             throw new CustomerExceptionHandler("Customer Address exceeds maximum length requirements");
-    }
-    
-    public static void validateID(int custID) throws CustomerExceptionHandler
-    {
-    	if (custID < 0)
-    	{
-    		throw new CustomerExceptionHandler("Customer ID needs to be a primary number");
-    	}
-    	else if (custID > 999)
-    	{
-    		throw new CustomerExceptionHandler("Customer ID is past max allowed id numbers");
-    	}
     }
 
     public static void validatePhoneNumber(String custPhone) throws CustomerExceptionHandler {
