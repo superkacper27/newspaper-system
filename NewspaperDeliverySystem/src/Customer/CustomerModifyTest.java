@@ -36,4 +36,12 @@ public class CustomerModifyTest extends TestCase {
         customer.setDaysOfDelivery("Tuesday, Thursday");
         assertEquals("Tuesday, Thursday", customer.getDaysOfDelivery());
     }
+
+    // Test reactivating a deleted customer
+    public void testReactivateCustomer() {
+        customer.deleteCustomer();
+        assertFalse(customer.isActive());
+        customer.reactivateCustomer();
+        assertTrue(customer.isActive());
+    }
 }

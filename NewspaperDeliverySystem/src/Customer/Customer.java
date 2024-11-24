@@ -2,6 +2,7 @@ package Customer;
 
 public class Customer {
 
+    private static int nextId = 1; // Auto-incrementing ID
     private int id;
     private String Fname;
     private String Sname;
@@ -14,7 +15,7 @@ public class Customer {
 
     // Constructor
     public Customer(String custFName, String custSName, String custAddr, String custPhone, String custEircode, String daysOfDelivery, String custEmail) throws CustomerExceptionHandler {
-        this.id = 0; // Default id for now
+        this.id = nextId++;
         setFname(custFName);
         setSname(custSName);
         setAddress(custAddr);
@@ -73,10 +74,6 @@ public class Customer {
         Sname = custSName;
     }
 
-    public void setId(int custId) {
-        this.id = custId;
-    }
-
     public void setAddress(String custAddr) throws CustomerExceptionHandler {
         validateAddress(custAddr);
         this.address = custAddr;
@@ -109,24 +106,24 @@ public class Customer {
     // Validation methods
     public static void validateFName(String custFName) throws CustomerExceptionHandler {
         if (custFName == null || custFName.isEmpty())
-            throw new CustomerExceptionHandler("Customer Name NOT specified");
+            throw new CustomerExceptionHandler("Customer First Name NOT specified");
         else if (custFName.length() < 2)
-            throw new CustomerExceptionHandler("Customer Name does not meet minimum length requirements");
+            throw new CustomerExceptionHandler("Customer First Name does not meet minimum length requirements");
         else if (custFName.length() > 50)
-            throw new CustomerExceptionHandler("Customer Name exceeds maximum length requirements");
-        else if (!custFName.matches("^[a-zA-Z ]+$")) // Check for symbols
-            throw new CustomerExceptionHandler("Customer Name contains invalid characters");
+            throw new CustomerExceptionHandler("Customer First Name exceeds maximum length requirements");
+        else if (!custFName.matches("^[a-zA-Z ]+$"))
+            throw new CustomerExceptionHandler("Customer First Name contains invalid characters");
     }
 
     public static void validateSName(String custSName) throws CustomerExceptionHandler {
         if (custSName == null || custSName.isEmpty())
-            throw new CustomerExceptionHandler("Customer Name NOT specified");
+            throw new CustomerExceptionHandler("Customer Last Name NOT specified");
         else if (custSName.length() < 2)
-            throw new CustomerExceptionHandler("Customer Name does not meet minimum length requirements");
+            throw new CustomerExceptionHandler("Customer Last Name does not meet minimum length requirements");
         else if (custSName.length() > 50)
-            throw new CustomerExceptionHandler("Customer Name exceeds maximum length requirements");
-        else if (!custSName.matches("^[a-zA-Z ]+$")) // Check for symbols
-            throw new CustomerExceptionHandler("Customer Name contains invalid characters");
+            throw new CustomerExceptionHandler("Customer Last Name exceeds maximum length requirements");
+        else if (!custSName.matches("^[a-zA-Z ]+$"))
+            throw new CustomerExceptionHandler("Customer Last Name contains invalid characters");
     }
 
     public static void validateAddress(String custAddr) throws CustomerExceptionHandler {
@@ -140,28 +137,30 @@ public class Customer {
 
     public static void validatePhoneNumber(String custPhone) throws CustomerExceptionHandler {
         if (custPhone == null || custPhone.isEmpty())
-            throw new CustomerExceptionHandler("Customer PhoneNumber NOT specified");
-        else if (!custPhone.matches("^\\d{7,15}$")) // Ensure the phone number is numeric and within length limits
-            throw new CustomerExceptionHandler("Customer PhoneNumber is invalid");
+            throw new CustomerExceptionHandler("Customer Phone Number NOT specified");
+        else if (!custPhone.matches("^\\d{7,15}$"))
+            throw new CustomerExceptionHandler("Customer Phone Number is invalid");
     }
 
     public static void validateEmail(String custEmail) throws CustomerExceptionHandler {
         if (custEmail == null || custEmail.isEmpty())
             throw new CustomerExceptionHandler("Customer Email NOT specified");
-        else if (!custEmail.matches("^[\\w-\\.]+@[\\w-\\.]+\\.[a-z]{2,}$")) // Basic email pattern validation
+        else if (!custEmail.matches("^[\\w-\\.]+@[\\w-\\.]+\\.[a-z]{2,}$"))
             throw new CustomerExceptionHandler("Customer Email is invalid");
     }
 
     public static void validateEircode(String custEircode) throws CustomerExceptionHandler {
         if (custEircode == null || custEircode.isEmpty())
             throw new CustomerExceptionHandler("Customer Eircode NOT specified");
-        else if (!custEircode.matches("^[A-Z0-9]{7}$")) // Ensure Eircode follows a valid pattern
+        else if (!custEircode.matches("^[A-Z0-9]{7}$"))
             throw new CustomerExceptionHandler("Customer Eircode is invalid");
     }
 
     public static void validateDaysOfDelivery(String daysOfDelivery) throws CustomerExceptionHandler {
         if (daysOfDelivery == null || daysOfDelivery.isEmpty())
             throw new CustomerExceptionHandler("Days of delivery NOT specified");
+        else if (!daysOfDelivery.matches("^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)(,\\s*(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday))*$"))
+            throw new CustomerExceptionHandler("Days of delivery contain invalid values");
     }
 
     // Customer CRUD operations
@@ -176,5 +175,14 @@ public class Customer {
 
     public void deleteCustomer() {
         this.isActive = false;
+    }
+
+    public void reactivateCustomer() {
+        this.isActive = true;
+    }
+
+    @Override
+    public String toString() {
+        return readCustomerInfo();
     }
 }
