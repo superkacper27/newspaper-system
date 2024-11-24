@@ -36,8 +36,9 @@ private static boolean printOrderTable(ResultSet rs) throws Exception {
 
 
 			System.out.printf("%30s", id);
-			System.out.printf("%30s", publication);
 			System.out.printf("%30s", days);
+			System.out.printf("%30s", publication);
+
 
 
 			System.out.println();
@@ -67,21 +68,21 @@ public static void main(String[] args) {
 		
 			//Present list of functionality and get selection
 			CustomerOptions();
-			functionNumber = keyboard.next();
+			functionNumber = keyboard.nextLine();
 	
 			switch (functionNumber) {
 	
 			case "1":
 				System.out.printf("Enter Publication Name: \n");
-				String orderPublication = keyboard.next();
+				String orderPublication = keyboard.nextLine();
 				System.out.printf("Enter Days of Delivery: \n");
-				String daysOfDelivery = keyboard.next();
+				String daysOfDelivery = keyboard.nextLine();
 				System.out.printf("Enter Customer Id: \n");
-				int orderID = keyboard.nextInt();
+				int custID = keyboard.nextInt();
 			
 
 			
-				Order orderObj = new Order(orderID, orderPublication, daysOfDelivery);
+				Order orderObj = new Order(daysOfDelivery, orderPublication, custID);
 			
 				//Insert Customer Details into the database
 				boolean insertResult = dao.insertOrderDetails(orderObj);
@@ -108,15 +109,28 @@ public static void main(String[] args) {
 				Scanner scanner3 = new Scanner(System.in);
 				
 				System.out.println("Update Order Details");
+				System.out.println("Enter what column you wish to edit: ");
+				String editTarget = scanner3.nextLine();
+				System.out.println("Enter the change here");
+				String editValue = scanner3.nextLine();
+				System.out.println("Enter the Id you wish to change");
+				int editID = scanner3.nextInt();
+				boolean editResult = dao.editOrder(editTarget, editValue, editID);
+				if(editResult == true)
+				{
+					System.out.println("Order data changed!");
+				}
+				else
+				{
+					System.out.println("ERROR: Order Details NOT Edited or Do not Exist");
+				}
 				
-				System.out.println("Press any key to return to the main menu...");
-		        scanner3.nextLine();
 				break;
 			case "4":
-				System.out.println("Enter Customer Id to be deleted or -99 to Clear all Rows");
-				String deleteCustId = keyboard.next();
-				boolean deleteResult = dao.deleteCustomerById(Integer.parseInt(deleteCustId));
-				if ((deleteResult == true) && (deleteCustId.equals("-99")))
+				System.out.println("Enter Order Id to be deleted or -99 to Clear all Rows");
+				String deleteOrderId = keyboard.next();
+				boolean deleteResult = dao.deleteCustomerById(Integer.parseInt(deleteOrderId));
+				if ((deleteResult == true) && (deleteOrderId.equals("-99")))
 					System.out.println("Order Table Emptied");
 				else if (deleteResult == true)
 					System.out.println("Order Deleted");
@@ -125,7 +139,7 @@ public static void main(String[] args) {
 				break;
 		
 			case "99":
-				System.out.println("Main Menue");
+				System.out.println("Main Menu");
 				CommandLine.main(args);
 				break;
 		

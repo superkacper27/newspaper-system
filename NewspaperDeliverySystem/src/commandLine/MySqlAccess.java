@@ -119,8 +119,8 @@ public class MySqlAccess {
 			try {
 				preparedStatement = connect.prepareStatement("insert into orders values (?, ?, ?)");
 				preparedStatement.setInt(1, d.getID());
-				preparedStatement.setString(2, d.getPublication());
-				preparedStatement.setString(3, d.getDays());
+				preparedStatement.setString(3, d.getPublication());
+				preparedStatement.setString(2, d.getDays());
 				preparedStatement.executeUpdate();
 			}
 			catch(Exception e)
