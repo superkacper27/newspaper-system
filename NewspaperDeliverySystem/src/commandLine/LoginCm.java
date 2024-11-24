@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class LoginCm {
     public static void main(String[] args) {
         // Hardcoded username and password
-        String correctUsername = "Jeremy Stone";
-        String correctPassword = "763585";
+        String correctUsername = "Kacper Gibas";
+        String correctPassword = "090099";
 
         // Create a scanner object to capture user input
         Scanner scanner = new Scanner(System.in);
