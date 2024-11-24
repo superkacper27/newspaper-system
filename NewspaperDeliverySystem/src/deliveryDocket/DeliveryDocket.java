@@ -95,6 +95,19 @@ public class DeliveryDocket {
         }
     }
     
+    
+    // **New Method: Read delivery docket details**
+    public String readDeliveryDocket() {
+        return "Delivery Docket Details: " +
+                "\nCustomer Name: " + custName +
+                "\nArea No: " + areaNo +
+                "\nID: " + ID +
+                "\nAddress: " + Address +
+                "\nCustomer Order: " + custOrder +
+                "\nDay: " + day +
+                "\nOrder Success: " + (orderSuccess ? "Yes" : "No");
+    }
+    
     public void deliveryStatus() {
         this.orderSuccess = !custOrder.isBlank();
     }
