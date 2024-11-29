@@ -5,13 +5,14 @@ import java.util.Scanner;
 public class LoginCm {
     public static void main(String[] args) {
         // Hardcoded username and password
-        String correctUsername = "Gareth";
+        String correctUsername = "John";
         String correctPassword = "123456";
 
         // Create a scanner object to capture user input
         Scanner scanner = new Scanner(System.in);
 
         // Prompt user for username
+        System.out.println("(Note: Username is John, Password is 123456)");
         System.out.print("Enter username: ");
         String username = scanner.nextLine();
 

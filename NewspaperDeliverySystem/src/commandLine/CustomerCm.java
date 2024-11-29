@@ -78,25 +78,25 @@ public static void main(String[] args) {
 			
 				//Present list of functionality and get selection
 				CustomerOptions();
-				functionNumber = keyboard.next();
+				functionNumber = keyboard.nextLine();
 		
 				switch (functionNumber) {
 		
 				case "1":
 					System.out.printf("Enter Customers First Name: \n");
-					String custFName = keyboard.next();
+					String custFName = keyboard.nextLine();
 					System.out.printf("Enter Customers Second Name: \n");
-					String custSName = keyboard.next();
+					String custSName = keyboard.nextLine();
 					System.out.printf("Enter Customer Address: \n");
-					String custAddr = keyboard.next();
+					String custAddr = keyboard.nextLine();
 					System.out.printf("Enter Customer PhoneNumber: \n");
-					String custPhone = keyboard.next();
+					String custPhone = keyboard.nextLine();
 					System.out.printf("Enter Customer Eircode: \n");
-					String custEircode = keyboard.next();
+					String custEircode = keyboard.nextLine();
 					System.out.printf("Enter Days of Delivery: \n");
-					String daysOfDelivery = keyboard.next();
+					String daysOfDelivery = keyboard.nextLine();
 					System.out.printf("Enter Customer Email: \n");
-					String custEmail = keyboard.next();
+					String custEmail = keyboard.nextLine();
 					System.out.printf("Enter Customer ID: \n");
 					int custID = keyboard.nextInt();
 
@@ -147,7 +147,7 @@ public static void main(String[] args) {
 					break;
 				case "4":
 					System.out.println("Enter Customer Id to be deleted or -99 to Clear all Rows");
-					String deleteCustId = keyboard.next();
+					String deleteCustId = keyboard.nextLine();
 					boolean deleteResult = dao.deleteCustomerById(Integer.parseInt(deleteCustId));
 					if ((deleteResult == true) && (deleteCustId.equals("-99")))
 						System.out.println("Customer Table Emptied");

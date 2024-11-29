@@ -67,17 +67,17 @@ public static void main(String[] args) {
 		
 			//Present list of functionality and get selection
 			CustomerOptions();
-			functionNumber = keyboard.next();
+			functionNumber = keyboard.nextLine();
 	
 			switch (functionNumber) {
 	
 			case "1":
 				System.out.printf("Enter Publication Name: \n");
-				String orderPublication = keyboard.next();
+				String orderPublication = keyboard.nextLine();
 				System.out.printf("Enter Days of Delivery: \n");
-				String daysOfDelivery = keyboard.next();
+				String daysOfDelivery = keyboard.nextLine();
 				System.out.printf("Enter Customer Id: \n");
-				String custID = keyboard.next();
+				String custID = keyboard.nextLine();
 			
 
 			

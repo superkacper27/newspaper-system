@@ -16,7 +16,7 @@ public class Customer {
     
     // Constructor
     public Customer(String custFName, String custSName, String custAddr, String custPhone, String custEircode, String daysOfDelivery, String custEmail, int custID) throws CustomerExceptionHandler {
-      //  setId(custID); 
+        setId(custID); 
         setFname(custFName);
         setSname(custSName);
         setAddress(custAddr);
