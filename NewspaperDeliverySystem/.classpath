@@ -6,6 +6,7 @@
 		</attributes>
 	</classpathentry>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="lib" path="src/commandLine/mysql-connector-java-8.0.22.jar"/>
@@ -13,5 +14,9 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="src" path="src"/>
 >>>>>>> refs/remotes/origin/James
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="src" path="src"/>
+>>>>>>> refs/remotes/origin/Lea
 	<classpathentry kind="output" path="bin"/>
 </classpath>

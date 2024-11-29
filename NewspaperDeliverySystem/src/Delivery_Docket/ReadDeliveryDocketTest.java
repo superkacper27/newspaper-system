@@ -1,8 +1,7 @@
-package deliveryDocket;
-
+package Delivery_Docket;
 import junit.framework.TestCase;
 
-public class ReadDeliveryDocket extends TestCase {
+public class ReadDeliveryDocketTest extends TestCase {
     private DeliveryDocket deliveryDocket;
 
     protected void setUp() throws Exception {
