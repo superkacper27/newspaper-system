@@ -31,13 +31,13 @@ private static boolean printOrderTable(ResultSet rs) throws Exception {
 		System.out.println();
 		while (rs.next()) {
 			int id = rs.getInt("id");
-			String publication = rs.getString("orderpublication");
-			String days = rs.getString("orderdays");
+			String publication = rs.getString("Publications");
+			String days = rs.getString("DaysOfDelivery");
 
 
 			System.out.printf("%30s", id);
-			System.out.printf("%30s", publication);
 			System.out.printf("%30s", days);
+			System.out.printf("%30s", publication);
 
 
 			System.out.println();
@@ -81,7 +81,7 @@ private static boolean printOrderTable(ResultSet rs) throws Exception {
 			
 
 			
-					Order orderObj = new Order(orderPublication, daysOfDelivery, custID);
+					Order orderObj = new Order(custID, daysOfDelivery, orderPublication);
 			
 					//Insert Customer Details into the database
 					boolean insertResult = dao.insertOrderDetails(orderObj);

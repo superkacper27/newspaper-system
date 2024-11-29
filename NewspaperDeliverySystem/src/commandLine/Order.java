@@ -31,12 +31,12 @@ public class Order {
 		ID = iD;
 	}
 	
-	public Order(String publication, String days, int iD) throws OrderExceptionHandler {
+	public Order(int custID, String days, String publication) throws OrderExceptionHandler {
 	    validatePublication(publication); 
 	    validateDays(days);               
 	    this.publication = publication;
 	    this.days = days;
-	    this.ID = iD;
+	    this.ID = custID;
 	    this.active = true;
 	}
 
@@ -75,7 +75,7 @@ public class Order {
 	}
 	public String readOrder() {
 		if (!active) return "Order has been deleted";
-	    return "Customer ID: " + ID + ", Publication(s): " + publication + ", Day(s) of the Week: " + days;
+	    return "Customer ID: " + ID + ", Day(s) of the Week: " + days +", Publication(s): " + publication;
 	}
 
 }
