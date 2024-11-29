@@ -4,7 +4,7 @@ public class Order {
 
 	private String publication;
 	private String days;
-	private String ID;
+	private int ID;
 	private boolean active;
 	
 
@@ -16,7 +16,7 @@ public class Order {
 	    validatePublication(publication); 
 		this.publication = publication;
 	}
-	public String getID() {
+	public int getID() {
 		return ID;
 	}
 	public String getDays() {
@@ -27,11 +27,11 @@ public class Order {
 
 		this.days = days;
 	}
-	public void setID(String iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 	
-	public Order(String publication, String days, String iD) throws OrderExceptionHandler {
+	public Order(String publication, String days, int iD) throws OrderExceptionHandler {
 	    validatePublication(publication); 
 	    validateDays(days);               
 	    this.publication = publication;

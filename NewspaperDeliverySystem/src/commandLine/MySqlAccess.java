@@ -123,7 +123,7 @@ public class MySqlAccess {
 				//Create prepared statement to issue SQL query to the database
 				preparedStatement = connect.prepareStatement("insert into customer values (?, ?, ?)");
 				
-				preparedStatement.setString(1, d.getID());
+				preparedStatement.setInt(1, d.getID());
 				preparedStatement.setString(2, d.getPublication());
 				preparedStatement.setString(3, d.getDays());
 

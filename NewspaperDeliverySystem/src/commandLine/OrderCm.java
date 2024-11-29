@@ -48,115 +48,115 @@ private static boolean printOrderTable(ResultSet rs) throws Exception {
 		
 	}
 	
-public static void main(String[] args) {
+	public static void main(String[] args) {
 		
 
 		
-		//Create the Database Object
+			//Create the Database Object
 		
-	try {
+		try {
 		
 		
-		MySqlAccess dao = new MySqlAccess();
-		// Configure System for Running
-		Scanner keyboard = new Scanner(System.in); 
-		String functionNumber = "-99";
-		boolean keepAppOpen = true;
+			MySqlAccess dao = new MySqlAccess();
+			// Configure System for Running
+			Scanner keyboard = new Scanner(System.in); 
+			String functionNumber = "-99";
+			boolean keepAppOpen = true;
 	
-		while (keepAppOpen == true) {
+			while (keepAppOpen == true) {
 		
-			//Present list of functionality and get selection
-			CustomerOptions();
-			functionNumber = keyboard.nextLine();
+				//Present list of functionality and get selection
+				CustomerOptions();
+				functionNumber = keyboard.nextLine();
 	
-			switch (functionNumber) {
+				switch (functionNumber) {
 	
-			case "1":
-				System.out.printf("Enter Publication Name: \n");
-				String orderPublication = keyboard.nextLine();
-				System.out.printf("Enter Days of Delivery: \n");
-				String daysOfDelivery = keyboard.nextLine();
-				System.out.printf("Enter Customer Id: \n");
-				String custID = keyboard.nextLine();
+				case "1":
+					System.out.printf("Enter Publication Name: \n");
+					String orderPublication = keyboard.nextLine();
+					System.out.printf("Enter Days of Delivery: \n");
+					String daysOfDelivery = keyboard.nextLine();
+					System.out.printf("Enter Customer Id: \n");
+					int custID = keyboard.nextInt();
 			
 
 			
-				Order orderObj = new Order(orderPublication, daysOfDelivery, custID);
+					Order orderObj = new Order(orderPublication, daysOfDelivery, custID);
 			
-				//Insert Customer Details into the database
-				boolean insertResult = dao.insertOrderDetails(orderObj);
-				if (insertResult == true)
-					System.out.println("Order Details Saved");
-				else 
-					System.out.println("ERROR: Order Details NOT Saved");
-				break;
-				
-			case "2": 
-				ResultSet rSet = dao.retrieveAllOrderAccounts();
-				if (rSet == null) {
-					System.out.println("No Records Found");
+					//Insert Customer Details into the database
+					boolean insertResult = dao.insertOrderDetails(orderObj);
+					if (insertResult == true)
+						System.out.println("Order Details Saved");
+					else 
+						System.out.println("ERROR: Order Details NOT Saved");
 					break;
-				}
-				else {
-					boolean tablePrinted = printOrderTable(rSet);
-					if (tablePrinted == true)
-						rSet.close();
-				}
-				break;
+					
+				case "2": 
+					ResultSet rSet = dao.retrieveAllOrderAccounts();
+					if (rSet == null) {
+						System.out.println("No Records Found");
+						break;
+					}
+					else {
+						boolean tablePrinted = printOrderTable(rSet);
+						if (tablePrinted == true)
+							rSet.close();
+					}
+					break;
 				
-			case "3":
-				Scanner scanner3 = new Scanner(System.in);
+				case "3":
+					Scanner scanner3 = new Scanner(System.in);
 				
-				System.out.println("Update Order Details");
-				System.out.println("Enter what column you wish to edit: ");
-				String editTarget = scanner3.nextLine();
-				System.out.println("Enter the change here");
-				String editValue = scanner3.nextLine();
-				System.out.println("Enter the Id you wish to change");
-				int editID = scanner3.nextInt();
-				boolean editResult = dao.editOrder(editTarget, editValue, editID);
-				if(editResult == true)
-				{
-					System.out.println("Order data changed!");
-				}
-				else
-				{
-					System.out.println("ERROR: Order Details NOT Edited or Do not Exist");
-				}
+					System.out.println("Update Order Details");
+					System.out.println("Enter what column you wish to edit: ");
+					String editTarget = scanner3.nextLine();
+					System.out.println("Enter the change here");
+					String editValue = scanner3.nextLine();
+					System.out.println("Enter the Id you wish to change");
+					int editID = scanner3.nextInt();
+					boolean editResult = dao.editOrder(editTarget, editValue, editID);
+					if(editResult == true)
+					{
+						System.out.println("Order data changed!");
+					}
+					else
+					{
+						System.out.println("ERROR: Order Details NOT Edited or Do not Exist");
+					}
 				
-				break;
-			case "4":
-				System.out.println("Enter Order Id to be deleted or -99 to Clear all Rows");
-				String deleteCustId = keyboard.next();
-				boolean deleteResult = dao.deleteCustomerById(Integer.parseInt(deleteCustId));
-				if ((deleteResult == true) && (deleteCustId.equals("-99")))
-					System.out.println("Order Table Emptied");
-				else if (deleteResult == true)
-					System.out.println("Order Deleted");
-				else 
-					System.out.println("ERROR: Order Details NOT Deleted or Do Not Exist");
-				break;
+					break;
+				case "4":
+					System.out.println("Enter Order Id to be deleted or -99 to Clear all Rows");
+					String deleteCustId = keyboard.next();
+					boolean deleteResult = dao.deleteCustomerById(Integer.parseInt(deleteCustId));
+					if ((deleteResult == true) && (deleteCustId.equals("-99")))
+						System.out.println("Order Table Emptied");
+					else if (deleteResult == true)
+						System.out.println("Order Deleted");
+					else 
+						System.out.println("ERROR: Order Details NOT Deleted or Do Not Exist");
+					break;
 		
-			case "99":
-				System.out.println("Main Menue");
-				CommandLine.main(args);
-				break;
+				case "99":
+					System.out.println("Main Menue");
+					CommandLine.main(args);
+					break;
 		
-			default:
-				System.out.println("No Valid Function Selected");
-				break;
-			} // end switch
+				default:
+					System.out.println("No Valid Function Selected");
+					break;
+				} // end switch
 	
-		}// end while
+			}// end while
 	
-		//Tidy up Resources
-		keyboard.close();
+			//Tidy up Resources
+			keyboard.close();
 	
-	}
+		}
 
-	catch(Exception e) {
-		System.out.println("PROGRAM TERMINATED - ERROR MESSAGE:" + e.getMessage());
-	} // end try-catch
+		catch(Exception e) {
+			System.out.println("PROGRAM TERMINATED - ERROR MESSAGE:" + e.getMessage());
+		} // end try-catch
 	}
 
 }
